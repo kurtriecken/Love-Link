@@ -102,7 +102,7 @@ export const Conversation = () => {
         await refetch();
         await myRefetch();
         getMessages(match);
-        console.log("here");
+        console.log("in useEffect");
       } catch (err) {
         console.error(err);
       }
@@ -114,10 +114,6 @@ export const Conversation = () => {
   } else {
     loadMatches();
   }
-
-const handleOnChangeMessage = (e)=> {
-  setInput(e.target.value)
-}
 
   function formatDateTime(date) {
     // Get hours, minutes, and seconds from the date
@@ -289,7 +285,9 @@ const handleOnChangeMessage = (e)=> {
                   variant="standard"
                   fullWidth={true}
                   value={input}
-                  onChange={handleOnChangeMessage}
+                  onChange={(e) => {
+                    setInput(e.target.value);
+                  }}
                   onKeyUp={classify}
                 />
                 <Avatar alt="Remy Sharp" src={data.me.image} />
