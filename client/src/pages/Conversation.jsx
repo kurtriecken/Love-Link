@@ -21,7 +21,11 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Backdrop from "@mui/material/Backdrop";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { successMessage, warningMessage } from "../utils/helper/notifications";
+import {
+  successMessage,
+  warningMessage,
+  errorMessage,
+} from "../utils/helper/notifications";
 import {
   ConversationMain,
   ConversationMessageBox,
@@ -111,6 +115,10 @@ export const Conversation = () => {
     loadMatches();
   }
 
+const handleOnChangeMessage = (e)=> {
+  setInput(e.target.value)
+}
+
   function formatDateTime(date) {
     // Get hours, minutes, and seconds from the date
     const hours = date.getHours();
@@ -156,8 +164,7 @@ export const Conversation = () => {
   }
 
   const sendMessage = () => {
-    let text = input;
-    makeMessage(text);
+    makeMessage(input);
   };
 
   const makeMessage = async (text) => {
@@ -173,7 +180,9 @@ export const Conversation = () => {
         loadMatches();
         getMessages(match);
       }
+      successMessage("Message sent");
     } catch (err) {
+      errorMessage("Something went wrong, try again");
       console.error(err);
     }
     setInput("");
@@ -280,7 +289,7 @@ export const Conversation = () => {
                   variant="standard"
                   fullWidth={true}
                   value={input}
-                  onChange={(event) => setInput(event.target.value)}
+                  onChange={handleOnChangeMessage}
                   onKeyUp={classify}
                 />
                 <Avatar alt="Remy Sharp" src={data.me.image} />
