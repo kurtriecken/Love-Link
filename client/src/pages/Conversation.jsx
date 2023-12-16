@@ -153,10 +153,17 @@ export const Conversation = () => {
     let newArr2 = data?.me?.outbox?.filter((m) => m.userId === match._id);
     let newArr = newArr1?.concat(newArr2);
     newArr = newArr?.sort((a, b) => a.createdAt - b.createdAt);
-    newArr?.forEach((message) => {
-      message.timeStamp = formatDateTime(new Date(parseInt(message.createdAt)));
-    });
-    setMessages(newArr);
+    // newArr?.forEach((message) => {
+    //   message.timeStamp = formatDateTime(new Date(parseInt(message.createdAt)));
+    // });
+    // setMessages(newArr);
+    //original objects are not mutated
+    const newArrWithTimestamp = newArr?.map((message) => ({
+      ...message,
+      timeStamp: formatDateTime(new Date(parseInt(message.createdAt))),
+    }));
+
+    setMessages(newArrWithTimestamp);
   }
 
   const sendMessage = () => {
