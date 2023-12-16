@@ -21,7 +21,11 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Backdrop from "@mui/material/Backdrop";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { successMessage, warningMessage } from "../utils/helper/notifications";
+import {
+  successMessage,
+  warningMessage,
+  errorMessage,
+} from "../utils/helper/notifications";
 import {
   ConversationMain,
   ConversationMessageBox,
@@ -111,6 +115,10 @@ export const Conversation = () => {
     loadMatches();
   }
 
+const handleOnChangeMessage = (e)=> {
+  setInput(e.target.value)
+}
+
   function formatDateTime(date) {
     // Get hours, minutes, and seconds from the date
     const hours = date.getHours();
@@ -148,16 +156,15 @@ export const Conversation = () => {
     console.log(newArr1);
     let newArr2 = data?.me?.outbox?.filter((m) => m.userId === match._id);
     let newArr = newArr1?.concat(newArr2);
-    newArr = newArr.sort((a, b) => a.createdAt - b.createdAt);
-    newArr.forEach((message) => {
+    newArr = newArr?.sort((a, b) => a.createdAt - b.createdAt);
+    newArr?.forEach((message) => {
       message.timeStamp = formatDateTime(new Date(parseInt(message.createdAt)));
     });
     setMessages(newArr);
   }
 
   const sendMessage = () => {
-    let text = input;
-    makeMessage(text);
+    makeMessage(input);
   };
 
   const makeMessage = async (text) => {
@@ -173,7 +180,9 @@ export const Conversation = () => {
         loadMatches();
         getMessages(match);
       }
+      successMessage("Message sent");
     } catch (err) {
+      errorMessage("Something went wrong, try again");
       console.error(err);
     }
     setInput("");
@@ -184,7 +193,7 @@ export const Conversation = () => {
   const classify = (event) => {
     const sentence = event.target.value;
     setInput(event.target.value);
-    if (event.keyCode === 13 || event.which === 13) {
+    if (event.key === "Enter") {
       setSpinner(true);
       toxicity.load(threshold).then((model) => {
         console.log(sentence);
@@ -228,7 +237,7 @@ export const Conversation = () => {
   return (
     <BoxContainer>
       <ProfileNavBar />
-      <ConversationsContainer sx={{ padding: "5%" }}>
+      <ConversationsContainer>
         <ConversationsHeader>
           <h1>{data.me.firstName}'s Conversations</h1>
         </ConversationsHeader>
@@ -246,14 +255,14 @@ export const Conversation = () => {
             </ConversationTitle>
             {messages?.length ? (
               messages.map((m, i) => (
-                <ConversationMessageBox 
-                  key={i}>
+                <ConversationMessageBox key={i}>
                   <MessageText>
                     <span style={{ fontWeight: "bold", color: "#8c5eeb" }}>
                       {m.text}
                     </span>
                     <span style={{ fontStyle: "italic" }}>
-                     @ {m.timeStamp}
+                      {" "}
+                      @ {m.timeStamp}
                     </span>
                   </MessageText>
                   <MessageImage
@@ -280,7 +289,7 @@ export const Conversation = () => {
                   variant="standard"
                   fullWidth={true}
                   value={input}
-                  onChange={(event) => setInput(event.target.value)}
+                  onChange={handleOnChangeMessage}
                   onKeyUp={classify}
                 />
                 <Avatar alt="Remy Sharp" src={data.me.image} />

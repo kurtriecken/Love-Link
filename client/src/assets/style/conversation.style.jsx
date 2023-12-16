@@ -3,9 +3,10 @@ import styled from "styled-components";
 import Box from "@mui/material/Box";
 
 export const ConversationsContainer = styled.div`
-margin: 0 auto;
+  margin: 0 auto;
   width: 95%;
   height: 100vh;
+  padding: 5%; 
 `;
 
 export const ConversationsHeader = styled.div`
