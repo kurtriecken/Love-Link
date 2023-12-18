@@ -98,7 +98,7 @@ export const Profile = () => {
       await addGalleryImg({
         variables: { gallery: galleryImgUrl },
       });
-      successMessage("Uploaded. You can add more.");
+      successMessage("Uploaded. You can add more!");
     } catch (error) {
       errorMessage("Something went wrong, try again");
       console.error("Remove Mutation Error:", error);
@@ -116,7 +116,7 @@ export const Profile = () => {
       await addProfileImg({
         variables: { image: profileImgUrl },
       });
-      successMessage("This picture such a cool");
+      successMessage("What a great picture!");
     } catch (error) {
       errorMessage("Something went wrong, try again");
       console.error("Mutation Error:", error);
