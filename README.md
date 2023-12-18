@@ -92,7 +92,7 @@ Finally, when you're ready to go, click on the broken heart icon in the top righ
 
 ### Jorlyna <span style="font-size: 12px"></span>
 
-<p>Email - <a href="mailto:"></a></p>
+<p>Email - <a href="mailto:jorlyna326@gmail.com"></a></p>
 <p>Github - <a href="https://github.com/jorlyna326">jorlyna326</a></p>
 <hr>
 
