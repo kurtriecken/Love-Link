@@ -67,7 +67,7 @@ export const QuestionTwo = () => {
 
   return (
     <BoxContainer>
-      <StyledTypography variant="h4">What is interest you?</StyledTypography>
+      <StyledTypography variant="h4">What interests you?</StyledTypography>
       <Autocomplete
         multiple
         id="interests"

@@ -72,7 +72,7 @@ export const QuestionThree = () => {
   return (
     <BoxContainer>
       <StyledTypography variant="h4">
-        Do you have any of this hobbies?
+        Do you have any of these hobbies?
       </StyledTypography>
       <Autocomplete
         multiple

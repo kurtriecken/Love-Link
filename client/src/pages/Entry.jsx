@@ -27,7 +27,7 @@ export const Entry = () => {
   });
 
   useEffect(() => {
-    successMessage("Hi dear! Login or Signup, wait for you...");
+    successMessage("Hi dear! Login or Signup, waiting for you...");
   }, []);
 
   const handleChange = (event) => {
@@ -71,7 +71,7 @@ export const Entry = () => {
     <>
       <EntryNavBar />
       <BoxContainer>
-        <StyledTypography variant="h4">Let's get start</StyledTypography>
+        <StyledTypography variant="h4">Let's get started!</StyledTypography>
         <form onSubmit={handleSubmit}>
           <Box sx={{ display: "flex" }}>
             <StyledFormContainer>

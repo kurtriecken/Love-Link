@@ -19,7 +19,7 @@ export const QuestionFour = () => {
   const navigate = useNavigate();
 
     useEffect(() => {
-      successMessage("We almost there... About you in short.");
+      successMessage("We're almost there...Be brief but catchy!");
     }, []);
 
   const runNextPage = async () => {

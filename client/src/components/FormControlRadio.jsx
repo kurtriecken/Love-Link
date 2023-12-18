@@ -25,10 +25,10 @@ export const FormControlRadio = ({ title, value, onChange, name }) => {
         value={value}
         onChange={onChange}
       >
-        <FormControlLabel value="female" control={<Radio />} label="Female" />
-        <FormControlLabel value="male" control={<Radio />} label="Male" />
+        <FormControlLabel value="Female" control={<Radio />} label="Female" />
+        <FormControlLabel value="Male" control={<Radio />} label="Male" />
         <FormControlLabel
-          value="nonbinary"
+          value="Nonbinary"
           control={<Radio />}
           label="Nonbinary"
         />

@@ -17,7 +17,7 @@ export const AboutMeInterestHobbyBlock = ({ isUser, match }) => {
     // hobbies: matchHobbies, interests: matchInterests } = match?.user;
   // }
   let { firstName, lastName, dob, 
-    hobbies, interests } = user;
+    hobbies, interests, gender } = user;
 
 
   if (loading) return <Spinner />
@@ -28,6 +28,7 @@ export const AboutMeInterestHobbyBlock = ({ isUser, match }) => {
     dob = match.user.dob;
     hobbies = match.user.hobbies;
     interests = match.user.interests;
+    gender = match.user.gender;
   }
 
 
@@ -74,6 +75,9 @@ export const AboutMeInterestHobbyBlock = ({ isUser, match }) => {
       </StyledSubtitle>
       <StyledSubtitle>
         Age: {age}
+      </StyledSubtitle>
+      <StyledSubtitle>
+        Gender: {gender}
       </StyledSubtitle>
       <StyledFlexBox>
         <AboutMeContent title="interests" content={interests} isUser={isUser} />
