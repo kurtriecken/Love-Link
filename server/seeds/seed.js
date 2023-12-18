@@ -9,6 +9,7 @@ const getInterests = require('./interests');
 const getHobbies = require('./hobbies');
 const getLooking = require('./lookingFor');
 const getAbout = require('./about');
+const getGender = require('./gender')
 
 const mappedData = seedData.map(({ gender, name, email, dob, picture }) => ({
   firstName: name.first,
@@ -17,7 +18,7 @@ const mappedData = seedData.map(({ gender, name, email, dob, picture }) => ({
   dob: dob.date,
   about: "I'm a very wonderful person!",
   password: "password123",
-  gender: gender,
+  gender: getGender(gender),
   about: getAbout(),
   hobbies: getHobbies(),
   interests: getInterests(),
