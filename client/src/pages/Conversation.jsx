@@ -199,7 +199,6 @@ export const Conversation = () => {
     if (event.key === "Enter") {
       setSpinner(true);
       toxicity.load(threshold).then((model) => {
-        console.log(sentence);
         // Activate spinner
         model.classify(sentence).then((predictions) => {
           // Deactivate spinner
