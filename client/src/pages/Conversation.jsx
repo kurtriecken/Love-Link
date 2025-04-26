@@ -102,7 +102,6 @@ export const Conversation = () => {
         await refetch();
         await myRefetch();
         getMessages(match);
-        console.log("in useEffect");
       } catch (err) {
         console.error(err);
       }
@@ -147,9 +146,6 @@ export const Conversation = () => {
     // this will bring back the conversation between the two
     setMatch(match);
     let newArr1 = match.outbox?.filter((m) => m.userId === data.me._id);
-    console.log("Match name: " + match.firstName);
-    console.log("Match outbox:");
-    console.log(newArr1);
     let newArr2 = data?.me?.outbox?.filter((m) => m.userId === match._id);
     let newArr = newArr1?.concat(newArr2);
     newArr = newArr?.sort((a, b) => a.createdAt - b.createdAt);
@@ -216,8 +212,7 @@ export const Conversation = () => {
   };
 
   const flagAccountToxic = async () => {
-    const retData = await setToxic();
-    console.log(retData);
+    await setToxic();
   };
 
   const handleClickOpen = () => {
