@@ -15,7 +15,7 @@
   
 <p align="center"> – LoveLink: Connecting Hearts Through Shared Passions and Personalized Matches</p>
 
-<h3 font size="1" align="right"><a href="https://hidden-garden-06286-72f8e54246d1.herokuapp.com/login" target="_blank">Visit Site🚀</a></h3>
+<h3 font size="1" align="right"><a href="https://love-link-1b7794b7a1a9.herokuapp.com/" target="_blank">Visit Site🚀</a></h3>
 
 ## Table of Contents
 
