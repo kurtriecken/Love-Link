@@ -7,9 +7,10 @@ import { useState, useEffect } from "react";
 import { SAVE_MATCH, REMOVE_MATCH } from "../utils/mutations";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { successMessage } from "../utils/helper/notifications";
+import { successMessage, errorMessage } from "../utils/helper/notifications";
 
 import Auth from "../utils/auth";
+import NoMatchesMessage from "../components/NoMatches";
 
 export const Matches = () => {
   const { loading, data, error, refetch } = useQuery(GET_USERS);
@@ -120,11 +121,12 @@ export const Matches = () => {
       <ProfileNavBar />
       <h2>Our curated matches just for you!</h2>
       <Grid container spacing={2} style={{paddingLeft:"5%", paddingRight:"5%"}}> 
-        {users.map((user, i) => (
+        {users && users.length > 0 ? users.map((user, i) => (
           <Grid item xs={6} md={4} key={i}>
             <MatchCard user={user} setMatch={setMatch} me={myData.me} unlike={unlike} />
           </Grid>
-        ))}
+        )) 
+        : <NoMatchesMessage />}
       </Grid>
       <ToastContainer />
     </BoxContainer>
