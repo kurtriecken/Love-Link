@@ -20,8 +20,9 @@ import {
   REMOVE_HOBBIES,
 } from "../utils/mutations";
 import Auth from "../utils/auth";
+import { AboutMeContentProps } from '../types/aboutMe'
 
-export const AboutMeContent = ({ title, content, isUser }) => {
+export const AboutMeContent = ({ title, content, isUser }: AboutMeContentProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [addHobbies] = useMutation(ADD_HOBBIES);
   const [addInterest] = useMutation(ADD_INTEREST);
@@ -55,7 +56,6 @@ export const AboutMeContent = ({ title, content, isUser }) => {
   };
 
   const handleDeleteItem = async (item) => {
-    debugger;
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
@@ -135,33 +135,25 @@ export const AboutMeContent = ({ title, content, isUser }) => {
           Favorite {title}:
           {isUser === false ? '': <StyledRiHeartAddFill onClick={openModal} /> }
         </StyledContentTypography>
-        {content && isUser === false ?
+        {content && content.length > 0 ?
           content.map((item) => (
             <Badge
               key={item}
               color="info"
+              badgeContent={
+                isUser === false ? null : 
+                <StyledTbHeartOff
+                  onClick={() => {
+                    handleDeleteItem(item);
+                  }}
+                />
+              }
               sx={{ margin: "2%" }}
             >
               <StyledDeleteButton>{item}</StyledDeleteButton>
             </Badge>
           )) : 
-          content.map((item) => (
-            <Badge
-              key={item}
-              badgeContent={
-                <StyledTbHeartOff
-                  onClick={() => {
-                    console.log(`delete ${item}`);
-                    handleDeleteItem(item);
-                  }}
-                />
-              }
-              color="info"
-              sx={{ margin: "2%" }}
-            >
-              <StyledDeleteButton>{item}</StyledDeleteButton>
-            </Badge>
-          ))}
+          <p>No {title} saved</p>}
       </StyledContentPaper>
       <Dialog open={isModalOpen} onClose={closeModal}>
         <DialogTitle>Select {title}</DialogTitle>
