@@ -106,7 +106,7 @@ export const StyledContentPaper = styledMUI(Paper)`
 
 export const StyledContentTypography = styledMUI(Typography)`
   font-size: 1.1rem;
-  margin-bottom: 2%;
+  margin-bottom: 6%;
   display: flex;
   justify-content: space-between
 `;
