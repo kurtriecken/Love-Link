@@ -4,7 +4,14 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 
-export const FormControlRadio = ({ title, value, onChange, name }) => {
+type FormControlRadioProps = {
+  title: String;
+  value?: string | number;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  name?: string
+}
+
+export const FormControlRadio: React.FC<FormControlRadioProps> = ({ title, value, onChange, name }) => {
 
   return (
     <FormControl>

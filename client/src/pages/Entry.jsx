@@ -71,7 +71,7 @@ export const Entry = () => {
     <>
       <EntryNavBar />
       <BoxContainer>
-        <StyledTypography variant="h4">Let's get started!</StyledTypography>
+        <StyledTypography variant="h4">Let&apos;s get started!</StyledTypography>
         <form onSubmit={handleSubmit}>
           <Box sx={{ display: "flex" }}>
             <StyledFormContainer>
