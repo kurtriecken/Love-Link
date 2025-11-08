@@ -5,12 +5,10 @@ const resolvers = {
   Query: {
     me: async (_, args, context) => {
       if (context.user) {
-        // console.log('in here to get a user -- have context')
         const userData = await User.findOne({ _id: context.user._id })
           .select("-__v-password")
           .populate("inbox", "outbox");
 
-        console.log(userData);
         return userData;
       }
       throw AuthenticationError;
@@ -61,6 +59,7 @@ const resolvers = {
           {
             $set: { image },
           },
+          // This property on the config ensures the modified object is returned
           { new: true }
         );
       }

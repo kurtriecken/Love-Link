@@ -15,29 +15,7 @@ import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { successMessage } from "../utils/helper/notifications";
-
-const options = [
-  "🐕‍🦺 Animal Rescue",
-  "💉 Vaccine Rights",
-  "⛪ Faith",
-  "👨‍👩‍👧‍👦 Family",
-  "🧑‍💼 Politics",
-  "🧘‍♀️ Mental health Awareness",
-  "🏀 Sports Fans",
-  "📚 Literature and Writing",
-  "🎓 Education Advocacy",
-  "🚗 Automobile Enthusiasts",
-  "🌿 Environmental Sustainability",
-  "📰 Journalism and Media",
-  "🎤 Public Speaking",
-  "🍷 Wine Tasting",
-  "🔬 Science Fiction",
-  "🌻 Gardening Enthusiasts",
-  "🎧 Podcast Enthusiasts",
-  "🕊️ Peace and Harmony",
-  "🛠️ DIY Home Improvement",
-  "🪷 Spiritual"
-];
+import { interestsOptions } from "../utils/constants";
 
 export const QuestionTwo = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -71,7 +49,7 @@ export const QuestionTwo = () => {
       <Autocomplete
         multiple
         id="interests"
-        options={options}
+        options={interestsOptions}
         onChange={(event, value) => setSelectedOptions(value)}
         value={selectedOptions}
         renderInput={(params) => (

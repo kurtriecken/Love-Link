@@ -48,6 +48,7 @@ export const QuestionOne = () => {
         dateFormat="yyyy-MM-dd"
         className="datepicker"
         placeholderText="YYYY-MM-DD"
+        maxDate={new Date()}
       />
       <BiSolidSkipNextCircle
         onClick={runNextPage}

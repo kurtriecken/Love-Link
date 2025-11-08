@@ -21,6 +21,7 @@ import {
 } from "../utils/mutations";
 import Auth from "../utils/auth";
 import { AboutMeContentProps } from '../types/aboutMe'
+import { hobbiesOptions, interestsOptions } from "../utils/constants";
 
 export const AboutMeContent = ({ title, content, isUser }: AboutMeContentProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -75,58 +76,8 @@ export const AboutMeContent = ({ title, content, isUser }: AboutMeContentProps) 
 
   const options =
     title === "interests"
-      ? [
-          "🐕‍🦺 Animal Rescue",
-          "💉 Vaccine Rights",
-          "⛪ Faith",
-          "👨‍👩‍👧‍👦 Family",
-          "🧑‍💼 Politics",
-          "🧘‍♀️ Mental health Awareness",
-          "🏀 Sports Fans",
-          "📚 Literature and Writing",
-          "🎓 Education Advocacy",
-          "🚗 Automobile Enthusiasts",
-          "🌿 Environmental Sustainability",
-          "📰 Journalism and Media",
-          "🎤 Public Speaking",
-          "🍷 Wine Tasting",
-          "🔬 Science Fiction",
-          "🌻 Gardening Enthusiasts",
-          "🎧 Podcast Enthusiasts",
-          "🕊️ Peace and Harmony",
-          "🛠️ DIY Home Improvement",
-          "🪷 Spiritual",
-        ]
-      : [
-          "📽️ Movie Buffs",
-          "🗺️ History",
-          "👒 Fashion and Style",
-          "🐈‍⬛ Pet Lover",
-          "🎭 Comedy/ Humor",
-          "✂️ Crafting",
-          "🎮 Gamer",
-          "🏕️ Outdoor Adventures",
-          "🎻 Music Lover",
-          "🏋️‍♂️ Fitness/Wellness",
-          "✈️ Traveling",
-          "🥞 Foodies",
-          "📖 Bookworms",
-          "🫂 Volunteering",
-          "💻 Tech/Innovation",
-          "🏎️ Motorcycle or Car Enthusiasts",
-          "📸 Photography",
-          "💃 Dance/Performing Arts",
-          "🚵‍♂️ Mountain Biking",
-          "🏄‍♂️ Surfing",
-          "🛶 Kayaking",
-          "🚁 Drone Flying",
-          "🏋️‍♀️ Fitness Workouts",
-          "🎤 Karaoke Nights",
-          "🛹 Skateboarding",
-          "🚀 Space Exploration",
-          "🌐 Learning New Languages",
-          "🧘‍♂️ Yoga and Meditation",
-        ];
+      ? interestsOptions
+      : hobbiesOptions;
 
   return (
     <>

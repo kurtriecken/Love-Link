@@ -12,37 +12,7 @@ import Auth from "../utils/auth";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { successMessage } from "../utils/helper/notifications";
-
-const options = [
-  "📽️ Movie Buffs",
-  "🗺️ History",
-  "👒 Fashion and Style",
-  "🐈‍⬛ Pet Lover",
-  "🎭 Comedy/ Humor",
-  "✂️ Crafting",
-  "🎮 Gamer",
-  "🏕️ Outdoor Adventures",
-  "🎻 Music Lover",
-  "🏋️‍♂️ Fitness/Wellness",
-  "✈️ Traveling",
-  "🥞 Foodies",
-  "📖 Bookworms",
-  "🫂 Volunteering",
-  "💻 Tech/Innovation",
-  "🏎️ Motorcycle or Car Enthusiasts",
-  "📸 Photography",
-  "💃 Dance/Performing Arts",
-  "🚵‍♂️ Mountain Biking",
-  "🏄‍♂️ Surfing",
-  "🛶 Kayaking",
-  "🚁 Drone Flying",
-  "🏋️‍♀️ Fitness Workouts",
-  "🎤 Karaoke Nights",
-  "🛹 Skateboarding",
-  "🚀 Space Exploration",
-  "🌐 Learning New Languages",
-  "🧘‍♂️ Yoga and Meditation",
-];
+import { hobbiesOptions } from "../utils/constants";
 
 export const QuestionThree = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -77,7 +47,7 @@ export const QuestionThree = () => {
       <Autocomplete
         multiple
         id="hobbies"
-        options={options}
+        options={hobbiesOptions}
         onChange={(event, value) => setSelectedOptions(value)}
         value={selectedOptions}
         renderInput={(params) => (

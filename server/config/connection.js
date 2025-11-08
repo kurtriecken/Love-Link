@@ -8,7 +8,6 @@ const mongooseOptions = {
 }
 
 if (connectionString.startsWith('mongodb+srv://')) {
-  console.log('test ing 000')
   mongooseOptions.ssl = true;
   mongooseOptions.tlsInsecure = false;
 }

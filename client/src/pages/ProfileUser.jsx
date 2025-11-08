@@ -17,7 +17,7 @@ import { useQuery} from "@apollo/client";
 
 export const ProfileUser = () => {
 
-  const [isUser, setIsUser] = useState(false);
+  const [isUser] = useState(false);
 
   const { id } = useParams();
   const { loading, error, data } = useQuery(GET_USER, {

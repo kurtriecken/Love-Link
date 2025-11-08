@@ -104,7 +104,7 @@ export const Matches = () => {
             user.lookingFor.toLowerCase() === myData.me.gender.toLowerCase()
         )
         .filter(
-          // Gets users who share at least one hobbie
+          // Gets users who share at least one hobby
           (user) => containsAny(user.hobbies, myData.me.hobbies)
         )
         .filter(
