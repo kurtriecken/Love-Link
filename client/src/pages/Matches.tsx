@@ -13,16 +13,15 @@ import Auth from "../utils/auth";
 import NoMatchesMessage from "../components/NoMatches";
 
 export const Matches = () => {
-  const { loading, data, error, refetch } = useQuery(GET_USERS);
+  const { loading, data, refetch } = useQuery(GET_USERS);
 
   const {
     loading: myLoading,
     data: myData,
-    error: myError,
     refetch: myRefetch,
   } = useQuery(GET_ME);
 
-  const [addMatch, { loading: matchLoading, error: matchError }] =
+  const [addMatch] =
     useMutation(SAVE_MATCH);
   const [removeMatch] = useMutation(REMOVE_MATCH);
   const [matchCount, setMatchCount] = useState(0);
@@ -78,9 +77,6 @@ export const Matches = () => {
   };
 
   const loadMatches = () => {
-    let mappedData = data.users.filter((user) =>
-      myData.me.matches.includes(user._id)
-    );
   };
 
   if (loading || myLoading) {
