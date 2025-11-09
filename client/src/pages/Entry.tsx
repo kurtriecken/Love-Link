@@ -14,10 +14,11 @@ import { ADD_USER } from "../utils/mutations";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { successMessage, errorMessage } from "../utils/helper/notifications";
+import { SignupFormData } from "../types/aboutMe";
 
 export const Entry = () => {
   const [addUser] = useMutation(ADD_USER);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<SignupFormData>({
     gender: "",
     lookingFor: "",
     firstName: "",
