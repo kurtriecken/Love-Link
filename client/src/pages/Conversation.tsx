@@ -41,16 +41,15 @@ import {
 } from "../assets/style/conversation.style";
 
 export const Conversation = () => {
-  const { loading, data, myError, refetch: myRefetch } = useQuery(GET_ME);
+  const { data, refetch: myRefetch } = useQuery(GET_ME);
 
   const {
     loading: newLoading,
     data: newData,
-    error,
     refetch,
   } = useQuery(GET_USERS);
 
-  const [sendMessageMutation, { err }] = useMutation(
+  const [sendMessageMutation] = useMutation(
     ADD_MESSAGE,
     // invalidate cache of use query data
     {

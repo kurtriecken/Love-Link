@@ -34,7 +34,7 @@ export const Matches = () => {
         init();
       } catch (err) {
         errorMessage("Sorry, something went wrong.");
-        console.err(err);
+        console.error(err);
       }
     };
   }, [matchCount]);
