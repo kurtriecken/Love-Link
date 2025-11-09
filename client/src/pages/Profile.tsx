@@ -24,6 +24,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { successMessage, errorMessage } from "../utils/helper/notifications";
 import { GalleryImage } from "../types/aboutMe";
+import emptyProfile from '../assets/img/empty_profile.jpeg'
 
 export const Profile = () => {
   const [showProfileButton, setProfileButton] = useState(false);
@@ -82,7 +83,7 @@ export const Profile = () => {
     );
   }, []);
 
-  const avatar = data?.me?.image;
+  const avatar = data?.me?.image ?? emptyProfile;
   const gallery = data?.me?.gallery;
 
   if (loading) return <Spinner />;

@@ -12,7 +12,7 @@ import { Greeting } from "./pages/Greeting.jsx";
 import { QuestionOne } from "./pages/QuestionOne.tsx";
 import { QuestionTwo } from "./pages/QuestionTwo.tsx";
 import { QuestionThree } from "./pages/QuestionThree.tsx";
-import { QuestionFour } from "./pages/QuestionFour.jsx";
+import { QuestionFour } from "./pages/QuestionFour.tsx";
 import Auth from './utils/auth.ts'
 import { ProfileUser } from "./pages/ProfileUser.jsx";
 import "./assets/style/main.css"
