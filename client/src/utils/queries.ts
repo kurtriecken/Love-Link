@@ -1,6 +1,6 @@
-import { gql } from "@apollo/client";
+import { DocumentNode, gql } from "@apollo/client";
 
-export const GET_ME = gql`
+export const GET_ME: DocumentNode = gql`
   query me {
     me {
       _id
@@ -37,7 +37,7 @@ export const GET_ME = gql`
   }
 `;
 
-export const GET_USER = gql`
+export const GET_USER: DocumentNode = gql`
   query user($userId: ID!) {
     user(userID: $userId) {
       _id
@@ -74,7 +74,7 @@ export const GET_USER = gql`
   }
 `;
 
-export const GET_USERS = gql`
+export const GET_USERS: DocumentNode = gql`
   query users {
     users {
       _id

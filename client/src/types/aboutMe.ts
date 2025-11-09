@@ -3,3 +3,8 @@ export type AboutMeContentProps = {
     content: string[];
     isUser: boolean;
 }
+
+export type GalleryImage = {
+    name: string,
+    imageUrl: string
+}

@@ -23,6 +23,7 @@ import Auth from "../utils/auth";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { successMessage, errorMessage } from "../utils/helper/notifications";
+import { GalleryImage } from "../types/aboutMe";
 
 export const Profile = () => {
   const [showProfileButton, setProfileButton] = useState(false);
@@ -41,14 +42,14 @@ export const Profile = () => {
     successMessage("Good to see you🩵");
 
     cloudinaryRef.current = window.cloudinary;
-    widgetRefProfile.current = cloudinaryRef.current.createUploadWidget(
+    widgetRefProfile.current = cloudinaryRef?.current?.createUploadWidget(
       {
         cloudName: import.meta.env.VITE_API_KEY_CLOUD_NAME,
         uploadPreset: import.meta.env.VITE_API_KEY_UPLOAD_PRESENT,
         folder: "lovelink/profile",
         theme: "purple",
       },
-      function (err, result) {
+      function (_, result) {
         if (result.event === "success") {
           setProfileImgUrl(result.info.secure_url);
           setProfileButton(true);
@@ -56,7 +57,7 @@ export const Profile = () => {
       }
     );
 
-    const galleryArray = [];
+    const galleryArray: Array<GalleryImage> = [];
 
     widgetRefGallery.current = cloudinaryRef.current.createUploadWidget(
       {
@@ -65,9 +66,9 @@ export const Profile = () => {
         folder: "lovelink/gallery",
         theme: "purple",
       },
-      function (err, result) {
+      function (_, result) {
         if (result.event === "success") {
-          const newObj = {
+          const newObj: GalleryImage = {
             name: result.info.original_filename,
             imageUrl: result.info.secure_url,
           };

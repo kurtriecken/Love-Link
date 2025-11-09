@@ -12,6 +12,7 @@ import Auth from "../utils/auth";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { successMessage } from "../utils/helper/notifications";
+import { TextFieldChangeEvent } from "../types/mui";
 
 export const QuestionFour = () => {
   const [userInput, setUserInput] = useState("");
@@ -47,7 +48,7 @@ export const QuestionFour = () => {
         label="Be creative..."
         variant="outlined"
         value={userInput}
-        onChange={(e) => setUserInput(e.target.value)}
+        onChange={(e: TextFieldChangeEvent) => setUserInput(e.target.value)}
       />
       <BiSolidSkipNextCircle
         onClick={runNextPage}
