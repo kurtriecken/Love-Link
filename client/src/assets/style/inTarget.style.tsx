@@ -6,7 +6,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import { RiKakaoTalkLine } from "react-icons/ri";
-import styled from "styled-components";
 import { TbHeartOff } from "react-icons/tb";
 
 export const StyledCard = styledMUI(Card)`

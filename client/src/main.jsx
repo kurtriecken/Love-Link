@@ -15,6 +15,7 @@ import { QuestionThree } from "./pages/QuestionThree.jsx";
 import { QuestionFour } from "./pages/QuestionFour.jsx";
 import Auth from './utils/auth.js'
 import { ProfileUser } from "./pages/ProfileUser.jsx";
+import "./assets/style/main.css"
 
 const router = createBrowserRouter([
   {
