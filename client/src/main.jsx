@@ -2,14 +2,14 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import {Error} from './pages/Error.jsx'
-import { Intro } from "./pages/Intro.jsx";
+import { Intro } from "./pages/Intro.tsx";
 import {Entry} from "./pages/Entry";
 import {Profile} from "./pages/Profile";
 import {Matches} from "./pages/Matches";
 import {InTarget} from "./pages/InTarget";
 import {Conversation} from "./pages/Conversation";
 import { Greeting } from "./pages/Greeting.jsx";
-import { QuestionOne } from "./pages/QuestionOne.jsx";
+import { QuestionOne } from "./pages/QuestionOne.tsx";
 import { QuestionTwo } from "./pages/QuestionTwo.jsx";
 import { QuestionThree } from "./pages/QuestionThree.jsx";
 import { QuestionFour } from "./pages/QuestionFour.jsx";
