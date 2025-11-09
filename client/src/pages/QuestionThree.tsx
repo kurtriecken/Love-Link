@@ -1,30 +1,27 @@
+import TextField from "@mui/material/TextField";
 import { BiSolidSkipNextCircle } from "react-icons/bi";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Autocomplete from "@mui/material/Autocomplete";
 import { BoxContainer } from "../assets/style/general.style";
-import {
-  StyledTextField,
-  StyledTypography,
-} from "../assets/style/question.style";
+import { StyledTypography } from "../assets/style/question.style";
 import { useMutation } from "@apollo/client";
-import { ADD_INTEREST } from "../utils/mutations";
+import { ADD_HOBBIES } from "../utils/mutations";
 import Auth from "../utils/auth";
-import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { successMessage } from "../utils/helper/notifications";
-import { interestsOptions } from "../utils/constants";
+import { hobbiesOptions } from "../utils/constants";
 
-export const QuestionTwo = () => {
+export const QuestionThree = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
+  const [addHobbies] = useMutation(ADD_HOBBIES);
   const navigate = useNavigate();
-  const [addInterest] = useMutation(ADD_INTEREST);
 
-  useEffect(() => {
-    successMessage("List all of your interests!");
-  }, []);
+   useEffect(() => {
+     successMessage("List all of your hobbies!");
+   }, []);
 
   const runNextPage = async () => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -32,12 +29,11 @@ export const QuestionTwo = () => {
     if (!token) {
       return false;
     }
-
     try {
-      await addInterest({
-        variables: { interests: selectedOptions },
+      await addHobbies({
+        variables: { hobbies: selectedOptions },
       });
-      navigate("/question3");
+      navigate("/question4");
     } catch (error) {
       console.error("Mutation Error:", error);
     }
@@ -45,17 +41,19 @@ export const QuestionTwo = () => {
 
   return (
     <BoxContainer>
-      <StyledTypography variant="h4">What interests you?</StyledTypography>
+      <StyledTypography variant="h4">
+        Do you have any of these hobbies?
+      </StyledTypography>
       <Autocomplete
         multiple
-        id="interests"
-        options={interestsOptions}
-        onChange={(event, value) => setSelectedOptions(value)}
+        id="hobbies"
+        options={hobbiesOptions}
+        onChange={(_, value) => setSelectedOptions(value)}
         value={selectedOptions}
         renderInput={(params) => (
-          <StyledTextField
+          <TextField
             {...params}
-            label="Interests"
+            label="hobbies"
             variant="outlined"
             sx={{ width: 300, margin: "15px" }}
           />

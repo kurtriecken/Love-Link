@@ -1,27 +1,30 @@
-import TextField from "@mui/material/TextField";
 import { BiSolidSkipNextCircle } from "react-icons/bi";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Autocomplete from "@mui/material/Autocomplete";
 import { BoxContainer } from "../assets/style/general.style";
-import { StyledTypography } from "../assets/style/question.style";
+import {
+  StyledTextField,
+  StyledTypography,
+} from "../assets/style/question.style";
 import { useMutation } from "@apollo/client";
-import { ADD_HOBBIES } from "../utils/mutations";
+import { ADD_INTEREST } from "../utils/mutations";
 import Auth from "../utils/auth";
+import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { successMessage } from "../utils/helper/notifications";
-import { hobbiesOptions } from "../utils/constants";
+import { interestsOptions } from "../utils/constants";
 
-export const QuestionThree = () => {
-  const [selectedOptions, setSelectedOptions] = useState([]);
-  const [addHobbies] = useMutation(ADD_HOBBIES);
+export const QuestionTwo = () => {
+  const [selectedOptions, setSelectedOptions] = useState<Array<string>>([]);
   const navigate = useNavigate();
+  const [addInterest] = useMutation(ADD_INTEREST);
 
-   useEffect(() => {
-     successMessage("List all of your hobbies!");
-   }, []);
+  useEffect(() => {
+    successMessage("List all of your interests!");
+  }, []);
 
   const runNextPage = async () => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -29,11 +32,12 @@ export const QuestionThree = () => {
     if (!token) {
       return false;
     }
+
     try {
-      await addHobbies({
-        variables: { hobbies: selectedOptions },
+      await addInterest({
+        variables: { interests: selectedOptions },
       });
-      navigate("/question4");
+      navigate("/question3");
     } catch (error) {
       console.error("Mutation Error:", error);
     }
@@ -41,19 +45,17 @@ export const QuestionThree = () => {
 
   return (
     <BoxContainer>
-      <StyledTypography variant="h4">
-        Do you have any of these hobbies?
-      </StyledTypography>
+      <StyledTypography variant="h4">What interests you?</StyledTypography>
       <Autocomplete
         multiple
-        id="hobbies"
-        options={hobbiesOptions}
-        onChange={(event, value) => setSelectedOptions(value)}
+        id="interests"
+        options={interestsOptions}
+        onChange={(_, value) => setSelectedOptions(value)}
         value={selectedOptions}
         renderInput={(params) => (
-          <TextField
+          <StyledTextField
             {...params}
-            label="hobbies"
+            label="Interests"
             variant="outlined"
             sx={{ width: 300, margin: "15px" }}
           />

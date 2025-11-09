@@ -1,6 +1,6 @@
-import { gql } from "@apollo/client";
+import { DocumentNode, gql } from "@apollo/client";
 
-export const ADD_USER = gql`
+export const ADD_USER: DocumentNode = gql`
   mutation addUser(
     $firstName: String!
     $email: String!
@@ -26,7 +26,7 @@ export const ADD_USER = gql`
   }
 `;
 
-export const LOGIN_USER = gql`
+export const LOGIN_USER: DocumentNode = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token
@@ -40,7 +40,7 @@ export const LOGIN_USER = gql`
   }
 `;
 
-export const ADD_PROFILE_IMG = gql`
+export const ADD_PROFILE_IMG: DocumentNode = gql`
   mutation addProfileImg($image: String!) {
     addProfileImg(image: $image) {
       _id
@@ -51,7 +51,7 @@ export const ADD_PROFILE_IMG = gql`
   }
 `;
 
-export const ADD_GALLERY_IMG = gql`
+export const ADD_GALLERY_IMG: DocumentNode = gql`
   mutation addGalleryImg($gallery: [GalleryInput!]!) {
     addGalleryImg(gallery: $gallery) {
       _id
@@ -65,7 +65,7 @@ export const ADD_GALLERY_IMG = gql`
   }
 `;
 
-export const ADD_DOB = gql`
+export const ADD_DOB: DocumentNode = gql`
   mutation addDOB($dob: String!) {
     addDOB(dob: $dob) {
       _id
@@ -76,7 +76,7 @@ export const ADD_DOB = gql`
   }
 `;
 
-export const ADD_INTEREST = gql`
+export const ADD_INTEREST: DocumentNode = gql`
 mutation addInterest($interests: [String!]!) {
   addInterest(interests: $interests) {
     _id
@@ -86,7 +86,7 @@ mutation addInterest($interests: [String!]!) {
   }
 }
 `
-export const ADD_HOBBIES = gql`
+export const ADD_HOBBIES: DocumentNode = gql`
   mutation addHobbies($hobbies: [String!]!) {
     addHobbies(hobbies: $hobbies) {
       _id
@@ -97,7 +97,7 @@ export const ADD_HOBBIES = gql`
   }
 `;
 
-export const ADD_ABOUT = gql`
+export const ADD_ABOUT: DocumentNode = gql`
   mutation addAbout($about: String!) {
     addAbout(about: $about) {
       _id
@@ -108,7 +108,7 @@ export const ADD_ABOUT = gql`
   }
 `;
 
-export const REMOVE_INTEREST = gql`
+export const REMOVE_INTEREST: DocumentNode = gql`
 mutation removeInterest($interests: String!) {
   removeInterest(interests: $interests) {
     _id
@@ -119,7 +119,7 @@ mutation removeInterest($interests: String!) {
 }
 `
 
-export const REMOVE_HOBBIES = gql`
+export const REMOVE_HOBBIES: DocumentNode = gql`
   mutation removeHobby($hobbies: String!) {
     removeHobby(hobbies: $hobbies) {
       _id
@@ -130,7 +130,7 @@ export const REMOVE_HOBBIES = gql`
   }
 `;
 
-export const ADD_IMAGE = gql`
+export const ADD_IMAGE: DocumentNode = gql`
 mutation addImage($imageUrl: String!) {
   addImage(imageURL: $imageUrl) {
     _id
@@ -141,7 +141,7 @@ mutation addImage($imageUrl: String!) {
 }
 `
 
-export const ADD_MESSAGE = gql`
+export const ADD_MESSAGE: DocumentNode = gql`
   mutation addMessage($message: String!, $targetId: ID!) {
     addMessage(message: $message, targetID: $targetId) {
       _id
@@ -157,7 +157,7 @@ export const ADD_MESSAGE = gql`
   }
 `;
 
-export const SAVE_MATCH = gql`
+export const SAVE_MATCH: DocumentNode = gql`
   mutation saveMatch($matchId: ID!) {
     saveMatch(matchID: $matchId) {
       _id
@@ -167,7 +167,7 @@ export const SAVE_MATCH = gql`
   }
 `;
 
-export const REMOVE_MATCH = gql`
+export const REMOVE_MATCH: DocumentNode = gql`
 mutation removeMatch($matchId: ID!) {
   removeMatch(matchID: $matchId) {
     _id
@@ -177,7 +177,7 @@ mutation removeMatch($matchId: ID!) {
 }
 `;
 
-export const SET_TOXIC = gql`
+export const SET_TOXIC: DocumentNode = gql`
 mutation setToxic {
   setToxic {
     _id

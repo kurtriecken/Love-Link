@@ -1,4 +1,4 @@
-export const interestsOptions = [
+export const interestsOptions: Array<string> = [
   "🐕‍🦺 Animal Rescue",
   "💉 Vaccine Rights",
   "⛪ Faith",
@@ -21,7 +21,7 @@ export const interestsOptions = [
   "🪷 Spiritual"
 ];
 
-export const hobbiesOptions = [
+export const hobbiesOptions: Array<string> = [
   "📽️ Movie Buffs",
   "🗺️ History",
   "👒 Fashion and Style",
