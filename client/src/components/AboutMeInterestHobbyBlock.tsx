@@ -8,14 +8,16 @@ import {
 } from "../assets/style/profile.style";
 import { Spinner } from "./Spinner";
 
-export const AboutMeInterestHobbyBlock = ({ isUser, match }) => {
+type AboutMeInterestHobbyBlockProps = {
+  isUser: boolean,
+  // TODO: update this with full type when I figure it out
+  match: any
+}
+
+export const AboutMeInterestHobbyBlock: React.FC<AboutMeInterestHobbyBlockProps> = ({ isUser, match }) => {
   const { loading, error, data } = useQuery(GET_ME);
   const user = data?.me || {};
-  // if (match) {
-    // const { 
-    // firstName: matchFN, lastName: matchLN, dob: matchDOB, 
-    // hobbies: matchHobbies, interests: matchInterests } = match?.user;
-  // }
+
   let { firstName, lastName, dob, 
     hobbies, interests, gender } = user;
 
@@ -25,19 +27,21 @@ export const AboutMeInterestHobbyBlock = ({ isUser, match }) => {
   if (isUser === false) {
     firstName = match.user.firstName;
     lastName = match.user.lastName;
-    dob = match.user.dob;
+    dob = match.user.dob ?? '';
     hobbies = match.user.hobbies;
     interests = match.user.interests;
     gender = match.user.gender;
   }
 
+  let date = dob ? new Date(parseInt(dob)) : 'N/A';
+  let age;
 
-  let date = new Date(parseInt(dob));
-  let age = calculateYearsSince(date);
+  if (date !== 'N/A') {
+    age = calculateYearsSince(date as Date);
+    date = formatDateToString(date as Date);
+  } else age = 'N/A'
 
-  date = formatDateToString(date);
-
-  function formatDateToString(date) {
+  function formatDateToString(date: Date) {
     const months = [
       'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
       'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
@@ -48,7 +52,7 @@ export const AboutMeInterestHobbyBlock = ({ isUser, match }) => {
     return formattedDate;
   }
 
-  function calculateYearsSince(date) {
+  function calculateYearsSince(date: Date) {
     const currentDate = new Date();
     const yearsSince = currentDate.getFullYear() - date.getFullYear();
 
@@ -74,7 +78,7 @@ export const AboutMeInterestHobbyBlock = ({ isUser, match }) => {
         Date of birth: {date}
       </StyledSubtitle>
       <StyledSubtitle>
-        Age: {age}
+        Age: {age ?? ''}
       </StyledSubtitle>
       <StyledSubtitle>
         Gender: {gender}

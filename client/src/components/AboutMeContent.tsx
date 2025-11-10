@@ -38,7 +38,7 @@ export const AboutMeContent = ({ title, content, isUser }: AboutMeContentProps) 
     setIsModalOpen(false);
   };
 
-  const handleSelection = async (item) => {
+  const handleSelection = async (item: string) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
@@ -56,10 +56,10 @@ export const AboutMeContent = ({ title, content, isUser }: AboutMeContentProps) 
     closeModal();
   };
 
-  const handleDeleteItem = async (item) => {
+  const handleDeleteItem = async (item: string) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-    if (!token) {
+    if (!token || !item) {
       return false;
     }
 

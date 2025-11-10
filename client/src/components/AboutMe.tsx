@@ -8,7 +8,12 @@ import { useQuery } from "@apollo/client";
 import { TfiThought } from "react-icons/tfi";
 import { Spinner } from "./Spinner";
 
-export const AboutMe = ({ isUser, matchAbout }) => {
+type AboutMeProps = {
+  isUser: boolean,
+  matchAbout: string
+}
+
+export const AboutMe: React.FC<AboutMeProps> = ({ isUser, matchAbout }) => {
   const { loading, error, data } = useQuery(GET_ME);
   let about = data?.me?.about;
 

@@ -30,7 +30,7 @@ export const ProfileUser = () => {
   if (loading) return <Spinner />;
   if (error) return <p>Error: {error.message}</p>;
 
-  let matchAbout = data.user.about;
+  const matchAbout = data.user.about;
 
    return (
     <BoxContainer>
